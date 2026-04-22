@@ -1,0 +1,38 @@
+{
+  "preset": "lr_exp",
+  "experiment_slug_cli": null,
+  "artifact_relative": "cnn/Optimization/LRscheduling/ExponentialLR",
+  "model": "CNN",
+  "best_val_accuracy": 0.971,
+  "idx_pickle_resolved": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\idx.pickle",
+  "artifacts": {
+    "root": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes",
+    "figs": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\figs\\cnn\\Optimization\\LRscheduling\\ExponentialLR",
+    "traininglogs": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\traininglogs\\cnn\\Optimization\\LRscheduling\\ExponentialLR",
+    "weights": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\best_models\\cnn\\Optimization\\LRscheduling\\ExponentialLR"
+  },
+  "args": {
+    "model": "CNN",
+    "preset": "lr_exp",
+    "experiment_slug": "",
+    "optimizer_setting": "lr_schedule",
+    "scheduler": "exponential",
+    "lr": 0.01,
+    "momentum": 0.9,
+    "step_size": 2000,
+    "gamma": 0.9995,
+    "l2_lambda": 0.0,
+    "early_stop": false,
+    "early_stop_patience": 5,
+    "epochs": 40,
+    "batch_size": 128,
+    "log_iters": 100,
+    "eval_every": 50,
+    "dev_batch_size": 0,
+    "mlp_hidden": 260,
+    "seed": 309,
+    "save_dir": null,
+    "idx_pickle": "idx.pickle",
+    "plot": false
+  }
+}

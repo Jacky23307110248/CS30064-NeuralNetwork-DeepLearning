@@ -1,0 +1,11 @@
+artifact_relative=mlp/Optimization/momentum
+model=MLP
+preset=momentum
+experiment_slug_cli=(default leaf from preset)
+best_val_accuracy=0.977000
+optimizer_setting=momentum
+scheduler=step
+lr=0.01 batch_size=128 epochs=40
+eval_every=50 dev_batch_size=None
+l2_lambda=0.0 early_stop=False patience=5
+weights_dir=D:\大三下\神经网络与深度学习\lab2\Project1-2026\PJ1\codes\best_models\mlp\Optimization\momentum
