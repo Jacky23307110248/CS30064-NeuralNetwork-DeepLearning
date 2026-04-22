@@ -1,0 +1,10 @@
+PJ1/codes/dataset/
+PJ1/codes/best_models/
+PJ1/codes/saved_models/
+
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
