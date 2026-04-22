@@ -1,0 +1,38 @@
+{
+  "preset": "reg_l2",
+  "experiment_slug_cli": null,
+  "artifact_relative": "mlp/Regularization/l2",
+  "model": "MLP",
+  "best_val_accuracy": 0.9468,
+  "idx_pickle_resolved": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\idx.pickle",
+  "artifacts": {
+    "root": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes",
+    "figs": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\figs\\mlp\\Regularization\\l2",
+    "traininglogs": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\traininglogs\\mlp\\Regularization\\l2",
+    "weights": "D:\\大三下\\神经网络与深度学习\\lab2\\Project1-2026\\PJ1\\codes\\best_models\\mlp\\Regularization\\l2"
+  },
+  "args": {
+    "model": "MLP",
+    "preset": "reg_l2",
+    "experiment_slug": "",
+    "optimizer_setting": "constant",
+    "scheduler": "step",
+    "lr": 0.01,
+    "momentum": 0.9,
+    "step_size": 2000,
+    "gamma": 0.5,
+    "l2_lambda": 1e-05,
+    "early_stop": false,
+    "early_stop_patience": 5,
+    "epochs": 40,
+    "batch_size": 128,
+    "log_iters": 100,
+    "eval_every": 50,
+    "dev_batch_size": 0,
+    "mlp_hidden": 260,
+    "seed": 309,
+    "save_dir": null,
+    "idx_pickle": "idx.pickle",
+    "plot": false
+  }
+}
