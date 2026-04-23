@@ -7752,7 +7752,7 @@ $$
 <ul>
 <li>momentum：$\mu=0.9$；</li>
 <li>StepLR：$s=2000, \gamma=0.5$；</li>
-<li>ExponentialLR：$\gamma=0.5$。</li>
+<li>ExponentialLR：$\gamma=0.9995$。</li>
 </ul>
 <p>下列四张图，从上到下分别为baseline、baseline + momentum、baseline + StepLR、baseline + ExponentialLR 的 loss 与 accuracy 曲线。</p>
 <p><img alt="CNN baseline curves" src="codes/figs/cnn/baseline/val_test_curves.png"/></p>
@@ -7974,7 +7974,7 @@ $$
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.3-Direction-4%EF%BC%9ARobustness-Analysis">3.3 Direction 4：Robustness Analysis<a class="anchor-link" href="#3.3-Direction-4%EF%BC%9ARobustness-Analysis">¶</a></h3><p>为验证基线MLP和CNN模型的鲁棒性，本节采用高斯噪声扰动测试集图片：$\epsilon\sim\mathcal{N}(0,\sigma^2)$，$\sigma\in\{0,0.01,0.05,0.1\}$。四种$\sigma$取值对应无噪声对照组、轻微噪声、中等噪声与较强噪声。为保证可复现性，实验使用固定 5 个随机种子（309, 310, 311, 312, 313）重复评估，并统计均值与标准差。</p>
+<h3 id="3.3-Direction-4%EF%BC%9ARobustness-Analysis">3.3 Direction 4：Robustness Analysis<a class="anchor-link" href="#3.3-Direction-4%EF%BC%9ARobustness-Analysis">¶</a></h3><p>为验证基线MLP和CNN模型的鲁棒性，本节采用高斯噪声扰动测试集图片：$\epsilon\sim\mathcal{N}(0,\sigma^2)$，$\sigma\in\{0,0.01,0.05,0.1\}$。四种$\sigma$取值对应无噪声对照组、轻微噪声、中等噪声与较强噪声。为保证可复现性，实验使用固定 10 个随机种子（309 - 318）重复评估，并统计均值与标准差。</p>
 <p>下表基于 <code>RobustnessAnalysis.json</code>汇总得到：</p>
 <table>
 <thead>
@@ -8030,16 +8030,24 @@ $$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="3.4-Direction-5%EF%BC%9AError-Analysis-and-Visualization">3.4 Direction 5：Error Analysis and Visualization<a class="anchor-link" href="#3.4-Direction-5%EF%BC%9AError-Analysis-and-Visualization">¶</a></h3><p>本部分中，前十名代表性错分样本的选择规则为，取所有测试集错分样本中，模型对错误预测类别置信度最高的前十名。</p>
 <h4 id="3.4.1-MLP-baseline">3.4.1 MLP baseline<a class="anchor-link" href="#3.4.1-MLP-baseline">¶</a></h4><p>下图为 MLP 基线模型在测试集上的混淆矩阵。</p>
-<p><img alt="MLP confusion matrix" src="codes/ErrorAnalysisDoc/mlp/confusion_matrix.png"/></p>
+<div align="center">
+<img alt="MLP confusion matrix" src="codes/ErrorAnalysisDoc/mlp/confusion_matrix.png" width="75%"/>
+</div>
 <p>从 MLP 的混淆矩阵可以看到，主要错误集中在若干形状相近的类别对上：例如真实 <code>4</code> 被预测为 <code>9</code>、真实 <code>7</code> 被预测为 <code>2</code> 或 <code>9</code>、真实 <code>5</code> 被预测为 <code>3</code>、真实 <code>8</code> 被预测为 <code>3/6</code>。这说明 MLP 的主要错误模式不是随机错分，而是对局部笔画差异敏感、对整体结构相近类别区分不足，尤其在弯钩、闭环、竖笔画组合相似时更容易混淆。</p>
 <p>下图为 MLP 基线模型的 Top-10 错分样本。</p>
-<p><img alt="MLP top10 misclassified" src="codes/ErrorAnalysisDoc/mlp/top10_misclassified.png"/></p>
+<div align="center">
+<img alt="MLP top10 misclassified" src="codes/ErrorAnalysisDoc/mlp/top10_misclassified.png" width="80%"/>
+</div>
 <p>Top-10 误分类样本中，高置信度错误大量出现在 <code>7→2</code>、<code>8→4</code>、<code>2→4/7</code>、<code>5→0</code> 等类别对，和混淆矩阵中的高频非对角项一致。可见 MLP 在部分样本上对局部特征感知能力不足，原因可能是输入展平后二维局部邻域关系被弱化，模型主要依赖全局像素组合做判别；当书写风格存在轻微形变、笔画粘连或缺损时，易把关键局部结构映射到错误类别模板，从而形成稳定的系统性错误。</p>
 <h4 id="3.4.2-CNN-baseline">3.4.2 CNN baseline<a class="anchor-link" href="#3.4.2-CNN-baseline">¶</a></h4><p>下图为 CNN 基线模型在测试集上的混淆矩阵。</p>
-<p><img alt="CNN confusion matrix" src="codes/ErrorAnalysisDoc/cnn/confusion_matrix.png"/></p>
+<div align="center">
+<img alt="CNN confusion matrix" src="codes/ErrorAnalysisDoc/cnn/confusion_matrix.png" width="75%"/>
+</div>
 <p>可以看到，CNN 的混淆矩阵整体更接近对角线，非对角项显著少于 MLP，说明总体分类更稳定。其主要残余错误仍集中在形状高度相近类别，如 <code>9→4/7</code>、<code>6→0</code>、<code>5→3</code>、<code>2→7</code>、<code>8→0</code>。与 MLP 相比，CNN 在大多数类别对上的混淆明显减轻，尤其是对闭环结构和局部笔画组合的判别更准确。</p>
 <p>下图为 CNN 基线模型的 Top-10 错分样本。</p>
-<p><img alt="CNN top10 misclassified" src="codes/ErrorAnalysisDoc/cnn/top10_misclassified.png"/></p>
+<div align="center">
+<img alt="CNN top10 misclassified" src="codes/ErrorAnalysisDoc/cnn/top10_misclassified.png" width="80%"/>
+</div>
 <p>CNN 的 Top-10 错分样本多为极端书写体、笔画断裂/粘连明显或形状高度畸变的样本，且对应的混淆类别与混淆矩阵高频错分对一致，表明其错误更多是个体难区分样本所导致，而非普遍性区分失败。对比 MLP，CNN 显著避免了大量由局部结构误判引发的常见错分模式；但也会新增少量非主流书写风格下的高置信度错误。该差异与两者结构设计直接相关：CNN 通过局部连接、参数共享与池化对笔画局部模式更敏感、对小位移更鲁棒，因此整体错误率更低；而 MLP 的展平输入机制更容易丢失空间拓扑信息，导致在相似数字之间产生更系统的混淆。</p>
 </div>
 </div>
