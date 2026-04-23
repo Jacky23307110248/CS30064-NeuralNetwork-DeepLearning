@@ -41,8 +41,14 @@ PJ1/
    ├─ draw_tools/
    │  ├─ draw.py
    │  └─ plot.py
-   ├─ figs/                 # 训练曲线图等
-   ├─ traininglogs/         # experiment.json / training_log.txt / curves.npz
+   ├─ figs/
+   │  └─ .../<某次实验>/
+   │     └─ val_test_curves.png  # 该实验的 train/dev/test loss-accuracy 曲线图
+   ├─ traininglogs/
+   │  └─ .../<某次实验>/
+   │     ├─ experiment.json      # 实验配置与元信息（模型、preset、超参数、路径等）
+   │     ├─ training_log.txt     # 训练过程文本日志（关键设置与结果摘要）
+   │     └─ curves.npz           # 曲线原始数组：train_loss, train_scores（启用评估的轮次还含 dev_loss, dev_scores，test_loss, test_scores）
    ├─ ErrorAnalysisDoc/     # 混淆矩阵与错分样例图
    ├─ dataset/              # 本地运行需要（不上传 GitHub）
    │  └─ MNIST/
