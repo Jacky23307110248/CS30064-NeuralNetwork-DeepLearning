@@ -17,7 +17,6 @@
 | PJ2 说明与运行方式 | [`PJ2/README.md`](PJ2/README.md) |
 | PJ2 作业说明 | [`PJ2/project_2_2026.md`](PJ2/project_2_2026.md) |
 | PJ2 报告（源文件） | [`PJ2/report.ipynb`](PJ2/report.ipynb) |
-| PJ2 报告（PDF） | [`PJ2/report.pdf`](PJ2/report.pdf) |
 
 ## 模型权重与数据（不上传 GitHub 的部分）
 
