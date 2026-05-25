@@ -1,0 +1,11 @@
+# Large artifacts (see Google Drive in README)
+data/cifar-10-batches-py/
+outputs/
+
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.DS_Store
+.venv/
+venv/
